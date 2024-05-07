@@ -14,7 +14,7 @@ import org.sonar.api.utils.Version;
 public class MockSonarRuntimeContext implements SonarRuntime {
     @Override
     public Version getApiVersion() {
-        return Version.create(9, 9);
+        return Version.create(9, 8);
     }
 
     @Override

@@ -4,6 +4,8 @@ import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
+import org.sonar.plugins.java.api.tree.IdentifierTree;
+import org.sonar.plugins.java.api.tree.MemberSelectExpressionTree;
 import org.sonar.plugins.java.api.tree.PackageDeclarationTree;
 import org.sonar.plugins.java.api.tree.Tree;
 
@@ -28,7 +30,12 @@ public class PackageNamingRule extends IssuableSubscriptionVisitor {
     @Override
     public void visitNode(Tree tree) {
         if(tree instanceof PackageDeclarationTree pdt) {
-            String pkg = pdt.packageName().toString();
+            String pkg = "";
+            if(pdt.packageName() instanceof MemberSelectExpressionTree mset) {
+                pkg = mset.identifier().name();
+            } else if(pdt.packageName() instanceof IdentifierTree it) {
+                pkg = it.name();
+            }
             if(!PACKAGE_NAMING_PATTERN.matcher(pkg).matches()) {
                 reportIssue(tree, "Package Name [" + pkg + "] Not Match Naming Rule.");
                 LOGGER.info("Visit [{}], Not Match Package Naming Style", pkg);
