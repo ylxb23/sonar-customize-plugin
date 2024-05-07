@@ -1,0 +1,14 @@
+{
+  "title": "ClassNamingUpperCamelRuleTemplate",
+  "type": "CODE_SMELL",
+  "template": true,
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "naming"
+  ],
+  "defaultSeverity": "Minor"
+}

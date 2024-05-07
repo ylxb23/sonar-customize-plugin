@@ -1,0 +1,20 @@
+<p>小驼峰命名风格</p>
+<p>主要适用于属性名、方法名、参数命名等，但排除final声明的属性、方法，在排除以下字符之后对命名进行大驼峰风格匹配：AO|BO|DAO|DO|DTO|PO|VO|PK</p>
+<h2>反例</h2>
+<pre>
+    // 首字母应小写
+    private String Name;
+    // ABC(或AB,BC)不在白名单内，不符合小驼峰命名方式
+    private String transferStudentDTO2StudentABC {
+    }
+</pre>
+<h2>正例</h2>
+<pre>
+    private String name;
+    private String studentVO;
+    // final 修饰的属性不作小驼峰命名限制
+    private static final MY_NAME = "zero";
+    // DTO 和 VO 是白名单范围内的字符串
+    public StudentVO transferStudentDTO2VO {
+    }
+</pre>

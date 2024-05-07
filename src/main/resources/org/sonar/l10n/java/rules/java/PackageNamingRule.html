@@ -1,0 +1,13 @@
+<p>包名命名方式应遵循全小写命名方式</p>
+<p>命名方式匹配规则：^[a-z0-9]+(\\.[a-z][a-z0-9]*)*$</p>
+<h2>反例</h2>
+<pre>
+    // 包名的字符应小写
+    package com.ABC.cGroup;
+    // 包名中不应出现除小写字母及数字和英文句号之外的字符
+    package com._abc.cgroup;
+</pre>
+<h2>正例</h2>
+<pre>
+    package com.abc.cgroup;
+</pre>

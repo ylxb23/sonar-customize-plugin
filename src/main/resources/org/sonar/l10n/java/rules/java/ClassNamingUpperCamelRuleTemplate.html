@@ -1,0 +1,21 @@
+<p>大驼峰命名风格</p>
+<p>主要适用于类名、接口名、枚举类名、record类名，在排除以下字符之后对命名进行大驼峰风格匹配：AO|BO|DAO|DO|DTO|PO|VO</p>
+<h2>反例</h2>
+<pre>
+    // ABC(或AB,BC)不在白名单内
+    public class StudentABC {
+    }
+
+    // 首字母应大写
+    public class studentAO {
+    }
+</pre>
+<h2>正例</h2>
+<pre>
+    // DTO是白名单内的字符串
+    public class StudentDTO {
+    }
+    // VO是白名单内的字符串
+    public class StudentVO {
+    }
+</pre>
