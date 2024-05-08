@@ -1,6 +1,5 @@
 package com.zero.sonar.customize.plugin.rules.naming;
 
-import com.zero.sonar.customize.plugin.rules.TemplateRule;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 import org.sonar.check.Rule;
@@ -60,11 +59,9 @@ public class ClassNamingUpperCamelRuleTemplate extends IssuableSubscriptionVisit
                     return;
                 }
                 // 关键字白名单
-                if(whiteKeys != null && !whiteKeys.isBlank()) {
-                    clazzName = clazzName.replaceAll(whiteKeys, "");
-                }
+                clazzName = clazzName.replaceAll(whiteKeys, "");
 
-                if(!UPPER_CAMEL_PATTERN.matcher(clazzName).matches()) {
+                if(!clazzName.isEmpty() && !UPPER_CAMEL_PATTERN.matcher(clazzName).matches()) {
                     reportIssue(tree, "Class Name [" + it.name() + "] Not UpperCamel Style Naming.");
                     LOGGER.info("Visit [{}], Naming Not UpperCamel Style", it.name());
                 }
@@ -83,7 +80,7 @@ public class ClassNamingUpperCamelRuleTemplate extends IssuableSubscriptionVisit
     }
 
     public void setWhiteList(String whiteList) {
-        this.whiteList = whiteList;
+        this.whiteList = whiteList == null ? "" : whiteList.trim();
     }
 
     public String getWhiteKeys() {
@@ -91,6 +88,6 @@ public class ClassNamingUpperCamelRuleTemplate extends IssuableSubscriptionVisit
     }
 
     public void setWhiteKeys(String whiteKeys) {
-        this.whiteKeys = whiteKeys;
+        this.whiteKeys = whiteKeys == null ? "" : whiteKeys.trim();
     }
 }

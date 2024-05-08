@@ -1,11 +1,11 @@
 {
-  "title": "ClassNamingUpperCamelRuleTemplate",
+  "title": "大驼峰命名规范模板",
   "type": "CODE_SMELL",
   "template": true,
   "status": "ready",
   "remediation": {
     "func": "Constant\/Issue",
-    "constantCost": "5min"
+    "constantCost": "0min"
   },
   "tags": [
     "naming"

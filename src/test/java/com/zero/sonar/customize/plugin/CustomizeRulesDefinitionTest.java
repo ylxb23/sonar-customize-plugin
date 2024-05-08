@@ -1,7 +1,5 @@
 package com.zero.sonar.customize.plugin;
 
-import com.zero.sonar.customize.plugin.rules.TemplateRule;
-import com.zero.sonar.customize.plugin.rules.naming.ClassNamingUpperCamelRuleTemplate;
 import org.junit.Assert;
 import org.junit.Test;
 import org.sonar.api.server.rule.RulesDefinition;

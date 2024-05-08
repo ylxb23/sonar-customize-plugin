@@ -1,10 +1,8 @@
 package com.zero.sonar.customize.plugin;
 
-import com.zero.sonar.customize.plugin.rules.TemplateRule;
-import com.zero.sonar.customize.plugin.rules.naming.ClassNamingUpperCamelRule;
 import com.zero.sonar.customize.plugin.rules.naming.ClassNamingUpperCamelRuleTemplate;
 import com.zero.sonar.customize.plugin.rules.naming.PackageNamingRule;
-import com.zero.sonar.customize.plugin.rules.naming.VariableNamingLowerCamelRule;
+import com.zero.sonar.customize.plugin.rules.naming.VariableNamingLowerCamelRuleTemplate;
 import org.sonar.api.SonarRuntime;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.plugins.java.api.JavaCheck;
@@ -35,6 +33,7 @@ public class CustomizeRulesDefinition implements RulesDefinition {
 
     private void initDefineTemplateRules() {
         TEMPLATE_RULE_KEYS.add("ClassNamingUpperCamelRuleTemplate");
+        TEMPLATE_RULE_KEYS.add("VariableNamingLowerCamelRuleTemplate");
     }
 
     @Override
@@ -68,9 +67,8 @@ public class CustomizeRulesDefinition implements RulesDefinition {
     public static List<Class<? extends JavaCheck>> registryCheckRuleList() {
         List<Class<? extends JavaCheck>> rules = new ArrayList<>();
         rules.add(PackageNamingRule.class);
-        rules.add(ClassNamingUpperCamelRule.class);
         rules.add(ClassNamingUpperCamelRuleTemplate.class);
-        rules.add(VariableNamingLowerCamelRule.class);
+        rules.add(VariableNamingLowerCamelRuleTemplate.class);
         return rules;
     }
 
