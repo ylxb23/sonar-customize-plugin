@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <!-- Define custom levels before using them for filtering below. -->
+    <CustomLevels>
+        <!--
+        OFF     0
+        FATAL   100
+        ERROR   200
+        WARN    300
+        INFO    400
+        DEBUG   500
+        TRACE   600
+        ALL     Integer.MAX_VALUE
+        -->
+        <CustomLevel name="NOTICE" intLevel="450" />
+        <CustomLevel name="VERBOSE" intLevel="550" />
+    </CustomLevels>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %-7level %logger{36} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="DEBUG">
+            <!-- Only events at DIAG level or more specific are sent to the console. -->
+            <AppenderRef ref="Console" level="DEBUG" />
+        </Root>
+    </Loggers>
+</Configuration>

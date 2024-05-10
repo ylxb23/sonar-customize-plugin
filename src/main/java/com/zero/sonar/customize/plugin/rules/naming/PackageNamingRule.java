@@ -1,10 +1,11 @@
 package com.zero.sonar.customize.plugin.rules.naming;
 
+import org.jetbrains.annotations.NotNull;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 import org.sonar.check.Rule;
-import org.sonar.java.model.ExpressionUtils;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
+import org.sonar.plugins.java.api.JavaFileScannerContext;
 import org.sonar.plugins.java.api.tree.IdentifierTree;
 import org.sonar.plugins.java.api.tree.MemberSelectExpressionTree;
 import org.sonar.plugins.java.api.tree.PackageDeclarationTree;
@@ -24,12 +25,17 @@ public class PackageNamingRule extends IssuableSubscriptionVisitor {
     private static final Pattern PACKAGE_NAMING_PATTERN = Pattern.compile("^[a-z0-9]+(\\.[a-z][a-z0-9]*)*$");
 
     @Override
+    public void scanFile(@NotNull JavaFileScannerContext context) {
+        super.scanFile(context);
+    }
+
+    @Override
     public List<Tree.Kind> nodesToVisit() {
         return List.of(Tree.Kind.PACKAGE);
     }
 
     @Override
-    public void visitNode(Tree tree) {
+    public void visitNode(@NotNull Tree tree) {
         if(tree instanceof PackageDeclarationTree pdt) {
             String pkg = "";
             if(pdt.packageName() instanceof MemberSelectExpressionTree mset) {

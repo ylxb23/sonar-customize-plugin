@@ -1,5 +1,6 @@
 package com.zero.sonar.customize.plugin.rules.naming;
 
+import org.jetbrains.annotations.NotNull;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 import org.sonar.check.Rule;
@@ -45,7 +46,7 @@ public class ClassNamingUpperCamelRuleTemplate extends IssuableSubscriptionVisit
     }
 
     @Override
-    public void visitNode(Tree tree) {
+    public void visitNode(@NotNull Tree tree) {
         if(tree instanceof ClassTree ct) {
             IdentifierTree it = ct.simpleName();
             if(it != null) {
@@ -54,6 +55,7 @@ public class ClassNamingUpperCamelRuleTemplate extends IssuableSubscriptionVisit
                     whites = Arrays.stream(whiteList.split(DEFAULT_SPLIT)).collect(Collectors.toSet());
                 }
                 // 类名白名单
+                assert whites != null;
                 if(whites.contains(clazzName)) {
                     super.visitNode(tree);
                     return;
@@ -71,7 +73,7 @@ public class ClassNamingUpperCamelRuleTemplate extends IssuableSubscriptionVisit
     }
 
     @Override
-    public boolean scanWithoutParsing(InputFileScannerContext inputFileScannerContext) {
+    public boolean scanWithoutParsing(@NotNull InputFileScannerContext inputFileScannerContext) {
         return super.scanWithoutParsing(inputFileScannerContext);
     }
 

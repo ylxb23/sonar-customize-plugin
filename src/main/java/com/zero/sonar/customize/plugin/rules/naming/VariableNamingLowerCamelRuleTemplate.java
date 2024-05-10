@@ -1,11 +1,14 @@
 package com.zero.sonar.customize.plugin.rules.naming;
 
+import com.zero.sonar.customize.plugin.util.PrinterVisitor;
+import org.jetbrains.annotations.NotNull;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 import org.sonar.check.Rule;
 import org.sonar.check.RuleProperty;
 import org.sonar.plugins.java.api.InputFileScannerContext;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
+import org.sonar.plugins.java.api.JavaFileScannerContext;
 import org.sonar.plugins.java.api.tree.MethodTree;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.VariableTree;
@@ -29,12 +32,18 @@ public class VariableNamingLowerCamelRuleTemplate extends IssuableSubscriptionVi
     private String whiteKeys;
 
     @Override
+    public void scanFile(@NotNull JavaFileScannerContext context) {
+        super.scanFile(context);
+        PrinterVisitor.print(context.getTree(), LOGGER::debug);
+    }
+
+    @Override
     public List<Tree.Kind> nodesToVisit() {
         return List.of(Tree.Kind.VARIABLE, Tree.Kind.METHOD);
     }
 
     @Override
-    public void visitNode(Tree tree) {
+    public void visitNode(@NotNull Tree tree) {
         if(tree instanceof VariableTree vt) {
             String vn = vt.simpleName().name();
             // 排除 static | final 修饰的属性
@@ -59,7 +68,7 @@ public class VariableNamingLowerCamelRuleTemplate extends IssuableSubscriptionVi
     }
 
     @Override
-    public boolean scanWithoutParsing(InputFileScannerContext inputFileScannerContext) {
+    public boolean scanWithoutParsing(@NotNull InputFileScannerContext inputFileScannerContext) {
         return super.scanWithoutParsing(inputFileScannerContext);
     }
 

@@ -51,11 +51,22 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.20.0</version>
+        </dependency>
+        <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>sonar-java-plugin</artifactId>
             <type>sonar-plugin</type>
             <version>${sonarjava.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <!-- p3c -->
+        <dependency>
+            <groupId>com.alibaba.p3c</groupId>
+            <artifactId>p3c-pmd</artifactId>
+            <version>2.1.1</version>
         </dependency>
 
 

@@ -45,7 +45,6 @@ public class CustomizeRulesDefinition implements RulesDefinition {
         zeroMetadata.addRulesByAnnotatedClass(zeroRepository, allRules());
 
         zeroRepository.rules().stream().filter(Objects::nonNull)
-                // 仅对实现 TemplateRule 接口的规则设置为模板
                 .filter(rule -> TEMPLATE_RULE_KEYS.contains(rule.key()))
                 .forEach(rule -> {
                     rule.setTemplate(true);
