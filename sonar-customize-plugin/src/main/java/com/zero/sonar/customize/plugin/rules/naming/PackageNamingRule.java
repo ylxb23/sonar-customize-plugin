@@ -1,6 +1,5 @@
 package com.zero.sonar.customize.plugin.rules.naming;
 
-import org.jetbrains.annotations.NotNull;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 import org.sonar.check.Rule;
@@ -30,7 +29,7 @@ public class PackageNamingRule extends IssuableSubscriptionVisitor {
     }
 
     @Override
-    public void visitNode(@NotNull Tree tree) {
+    public void visitNode(Tree tree) {
         if(tree instanceof PackageDeclarationTree pdt) {
             String pkg = "";
             if(pdt.packageName() instanceof MemberSelectExpressionTree mset) {

@@ -1,5 +1,5 @@
 {
-  "title": "PackageNamingRule",
+  "title": "包名命名规则",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {

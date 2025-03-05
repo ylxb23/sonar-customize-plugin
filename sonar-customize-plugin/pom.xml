@@ -10,11 +10,11 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <name>Customize Sonar Plugin</name>
-    <description>Sonar Plugin For SonarQube, Within All P3C Rules And Customized Rules.</description>
+    <description>Sonar Plugin For SonarQube.</description>
 
     <properties>
-        <maven.compiler.source>23</maven.compiler.source>
-        <maven.compiler.target>23</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <sonar.apiVersion>9.9.0.229</sonar.apiVersion>
         <sonar.sources>src/main/java,src/main/js</sonar.sources>
@@ -62,12 +62,6 @@
             <type>sonar-plugin</type>
             <version>${sonarjava.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <!-- p3c -->
-        <dependency>
-            <groupId>com.alibaba.p3c</groupId>
-            <artifactId>p3c-pmd</artifactId>
-            <version>2.1.1</version>
         </dependency>
 
 
@@ -132,8 +126,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <source>17</source>
-                    <target>17</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.source}</target>
                 </configuration>
             </plugin>
             <plugin>

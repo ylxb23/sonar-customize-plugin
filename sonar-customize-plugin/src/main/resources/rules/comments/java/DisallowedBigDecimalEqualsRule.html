@@ -1,0 +1,20 @@
+<p>BigDecimal 数据类型的等值比较不允许使用 equals方法</p>
+<p>
+    BigDecimal 的equals方法不仅对值进行比较，同时对BigDecimal的精度进行比较，如果值相同但精度不同则也会返回false.
+</p>
+<h2>反例</h2>
+<pre>
+    BigDecimal a = new BigDecimal("1.23");
+    BigDecimal b = new BigDecimal("1.230");
+    if(a.equals(b)) {
+        // 由于a的精度与b的精度不一致，使用equals比较的结果为 false
+    }
+</pre>
+<h2>正例</h2>
+<pre>
+    BigDecimal a = new BigDecimal("1.23");
+    BigDecimal b = new BigDecimal("1.230");
+    if(a.compareTo(b) == 0) {
+        // 正确的等值比较方式
+    }
+</pre>

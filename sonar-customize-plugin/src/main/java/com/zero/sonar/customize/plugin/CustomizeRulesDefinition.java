@@ -1,5 +1,6 @@
 package com.zero.sonar.customize.plugin;
 
+import com.zero.sonar.customize.plugin.rules.DisallowedBigDecimalEqualsRule;
 import com.zero.sonar.customize.plugin.rules.naming.ClassNamingUpperCamelRuleTemplate;
 import com.zero.sonar.customize.plugin.rules.naming.PackageNamingRule;
 import com.zero.sonar.customize.plugin.rules.naming.VariableNamingLowerCamelRuleTemplate;
@@ -16,7 +17,7 @@ import java.util.*;
  */
 public class CustomizeRulesDefinition implements RulesDefinition {
 
-    private static final String RESOURCE_BASE_PATH = "org/sonar/l10n/java/rules/java";
+    private static final String RESOURCE_BASE_PATH = "rules/comments/java";
 
     public static final String LANGUAGE_JAVA = "java";
     public static final String REPOSITORY_KEY = "zero-customize";
@@ -65,7 +66,9 @@ public class CustomizeRulesDefinition implements RulesDefinition {
      */
     public static List<Class<? extends JavaCheck>> registryCheckRuleList() {
         List<Class<? extends JavaCheck>> rules = new ArrayList<>();
+        rules.add(DisallowedBigDecimalEqualsRule.class);
         rules.add(PackageNamingRule.class);
+
         rules.add(ClassNamingUpperCamelRuleTemplate.class);
         rules.add(VariableNamingLowerCamelRuleTemplate.class);
         return rules;

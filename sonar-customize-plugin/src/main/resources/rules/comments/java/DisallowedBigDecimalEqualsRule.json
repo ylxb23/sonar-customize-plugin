@@ -1,0 +1,13 @@
+{
+  "title": "BigDecimal 数据类型的等值比较不允许使用 equals方法",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "equals"
+  ],
+  "defaultSeverity": "Minor"
+}

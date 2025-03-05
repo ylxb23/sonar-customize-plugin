@@ -11,11 +11,11 @@
 $ mvn clean verify sonar:sonar -Dmaven.test.skip=true   -Dsonar.projectKey=test   -Dsonar.projectName='Test'   -Dsonar.host.url=http://localhost:9000   -Dsonar.token=sqp_24dd13ba0982458e9df6b53719fff92b63fc5d56
 ```
 该插件具备的扫描规则及模板示例：
-![SonarQube Rules](./docs/imgs/sonarqube_rule_repository_capture.jpg)
+![SonarQube Rules](./sonar-customize-plugin/docs/imgs/sonarqube_rule_repository_capture.jpg)
 
 # 特性
  - [X] 自定义扫描规则插件，包括自定义规则、自定义规则模板
- - [ ] 加入p3c规范内容
+ - [ ] 加入p3c规范内容，并提供p3c规则再开发
 
 > 参考:
 > - [10.4 | Extension Guide | Developing a plugin | Plugin basics](https://docs.sonarsource.com/sonarqube/10.4/extension-guide/developing-a-plugin/plugin-basics/)
