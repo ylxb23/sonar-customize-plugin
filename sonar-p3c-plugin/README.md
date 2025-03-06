@@ -1,0 +1,1 @@
+根据 [sonar-pmd](https://github.com/jborgers/sonar-pmd)打包构建。
